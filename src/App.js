@@ -70,6 +70,27 @@ function App() {
     }
   };
 
+  const staggeredLyricsRequests = async (tracks, delayMs = 1000) => {
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+    const promises = tracks.map((track, index) => {
+      return new Promise(async (resolve) => {
+        await delay(index * delayMs); // stagger start
+        try {
+          const res = await axios.get(
+            `https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
+          );
+          resolve({ track, lyrics: res.data.lyrics });
+        } catch (err) {
+          console.error(`Lyrics fetch error for ${track.name}`, err);
+          resolve({ track, lyrics: null, error: true });
+        }
+      });
+    });
+
+    return Promise.all(promises);
+  };
+
   const handleShowMoodSummary = async () => {
     setLoadingMood(true);
     setShowMoodModal(true);
@@ -78,26 +99,7 @@ function App() {
     const lyricsResults = [];
 
     try {
-      for (const track of tracks) {
-        try {
-          const res = await axios.get(
-            `https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
-          );
-
-          lyricsResults.push({
-            track,
-            lyrics: res.data.lyrics,
-          });
-        } catch (err) {
-          console.error(`Lyrics fetch error for ${track.name}`, err);
-          lyricsResults.push({
-            track,
-            lyrics: null,
-            error: true,
-          });
-        };
-        await delay(1000);
-      }
+      const lyricsResults = await staggeredLyricsRequests(tracks, 1000);
 
       const moodResults = await Promise.all(
         lyricsResults.map(async ({ track, lyrics, error }) => {
