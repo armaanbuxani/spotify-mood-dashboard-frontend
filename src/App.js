@@ -74,27 +74,30 @@ function App() {
     setLoadingMood(true);
     setShowMoodModal(true);
 
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+    const lyricsResults = [];
+
     try {
-      const lyricsResults = await Promise.all(
-        tracks.map(async (track) => {
-          try {
-            const res = await axios.get(
-              `https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
-            );
-            return {
-              track,
-              lyrics: res.data.lyrics,
-            };
-          } catch (err) {
-            console.error(`Lyrics fetch error for ${track.name}`, err);
-            return {
-              track,
-              lyrics: null,
-              error: true,
-            };
-          }
-        })
-      );
+      for (const track of tracks) {
+        try {
+          const res = await axios.get(
+            `https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
+          );
+
+          lyricsResults.push({
+            track,
+            lyrics: res.data.lyrics,
+          });
+        } catch (err) {
+          console.error(`Lyrics fetch error for ${track.name}`, err);
+          lyricsResults.push({
+            track,
+            lyrics: null,
+            error: true,
+          });
+        };
+        await delay(1000);
+      }
 
       const moodResults = await Promise.all(
         lyricsResults.map(async ({ track, lyrics, error }) => {
