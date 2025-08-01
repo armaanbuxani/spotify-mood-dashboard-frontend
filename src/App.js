@@ -13,6 +13,7 @@ function App() {
   const [showMoodModal, setShowMoodModal] = useState(false);
   const [loadingMood, setLoadingMood] = useState(false);
   const [overallMood, setOverallMood] = useState('');
+  const [loadingDots, setLoadingDots] = useState('');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -42,6 +43,22 @@ function App() {
         setError('Failed to fetch tracks.')
       });
   }, [accesstoken]);
+
+  useEffect(() => {
+    if (!loadingMood) {
+      setLoadingDots('');
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setLoadingDots((prev) => {
+        if (prev === '...') return '';
+        return prev + '.';
+      });
+    }, 500); // change speed if needed
+
+    return () => clearInterval(interval);
+  }, [loadingMood]);
 
   const fetchLyrics = async (track, artist) => {
     setActiveLyrics({
@@ -339,10 +356,7 @@ function App() {
 
               {loadingMood ? (
                 <p className="loading-text">
-                  Analyzing mood for your top tracks
-                  <span className="dot">.</span>
-                  <span className="dot">.</span>
-                  <span className="dot">.</span>
+                  Analyzing mood for your top tracks{loadingDots}
                 </p>
               ) : (
                 <>

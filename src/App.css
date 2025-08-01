@@ -44,21 +44,3 @@
   margin-top: 10px;
   text-align: center;
 }
-
-.dot {
-  animation: blink 1.4s infinite;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1;
-  color: #555;
-}
-
-.loading-text .dot:nth-of-type(1) {
-  animation-delay: 0s;
-}
-.loading-text .dot:nth-of-type(2) {
-  animation-delay: 0.2s;
-}
-.loading-text .dot:nth-of-type(3) {
-  animation-delay: 0.4s;
-}
