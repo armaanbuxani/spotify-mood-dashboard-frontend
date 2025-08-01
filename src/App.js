@@ -95,9 +95,6 @@ function App() {
     setLoadingMood(true);
     setShowMoodModal(true);
 
-    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-    const lyricsResults = [];
-
     try {
       const lyricsResults = await staggeredLyricsRequests(tracks, 1000);
 
