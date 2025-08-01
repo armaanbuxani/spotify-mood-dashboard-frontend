@@ -70,7 +70,7 @@ function App() {
     }
   };
 
-  const staggeredLyricsRequests = async (tracks, delayMs = 1000) => {
+  const staggeredLyricsRequests = async (tracks, delayMs = 2000) => {
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
     const promises = tracks.map((track, index) => {
@@ -96,7 +96,7 @@ function App() {
     setShowMoodModal(true);
 
     try {
-      const lyricsResults = await staggeredLyricsRequests(tracks, 1000);
+      const lyricsResults = await staggeredLyricsRequests(tracks, 2000);
 
       const moodResults = await Promise.all(
         lyricsResults.map(async ({ track, lyrics, error }) => {
