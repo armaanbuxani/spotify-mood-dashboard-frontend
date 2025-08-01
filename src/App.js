@@ -338,7 +338,12 @@ function App() {
               <h2 style={{ marginTop: 0 }}>Mood Summary</h2>
 
               {loadingMood ? (
-                <p>Analyzing mood for your top tracks...</p>
+                <p className="loading-text">
+                  Analyzing mood for your top tracks
+                  <span className="dot">.</span>
+                  <span className="dot">.</span>
+                  <span className="dot">.</span>
+                </p>
               ) : (
                 <>
                   {/* Overall Mood Summary */}
