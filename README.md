@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Spotify Mood Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An AI-powered dashboard that analyzes the lyrics of your top 20 Spotify tracks to generate a personalized mood summary with interactive visualizations.
 
-## Available Scripts
+> Built to demonstrate full-stack development, API integration, and applied AI in a production-ready project.
 
-In the project directory, you can run:
+[Live Demo](https://music-mood-frontend.vercel.app) | [Backend Repo](https://github.com/armaanbuxani/music-mood-backend)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Preview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Mood Summary Dashboard](./assets/mood_summary.png)
 
-### `npm test`
+This summary is generated using sentiment analysis on lyrics pulled from Genius, based on your Spotify listening history.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- OAuth login with Spotify
+- Fetches your top 20 tracks
+- Retrieves lyrics via Genius API
+- Applies sentiment analysis using OpenAI API 
+- Displays data using visualizations and natural language summaries
+- Responsive design
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How It Works
 
-### `npm run eject`
+1. **Sign in** with your Spotify account  
+2. **View your top 20 tracks**  
+3. **Analyze mood and view the summary dashboard**  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Includes interactive charts and sentiment breakdown based on lyrics.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Languages
+- Python (Backend)
+- JavaScript / JSX (Frontend)
 
-## Learn More
+### Backend
+- Flask (REST API)
+- Spotipy + Requests (Spotify integration)
+- ScraperAPI (Genius lyrics extraction)
+- OpenAI API (Sentiment and mood analysis)
+- Docker (Containerization)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Frontend
+- React (Component-based UI)
+- Axios (HTTP requests)
+- Recharts (Data visualization)
+- CSS (Styling)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### DevOps & Deployment
+- Git + GitHub (Version control)
+- Render (Flask API deployment)
+- Vercel (Frontend hosting)
 
-### Code Splitting
+### Other Tools
+- OAuth 2.0 (Spotify authentication flow)
+- Environment Variables (`.env` for credentials and configs)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Setup Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1. Clone this frontend repo
+```bash
+git clone https://github.com/yourusername/music-mood-frontend
+cd music-mood-frontend
+```
 
-### Making a Progressive Web App
+### 2. Install dependencies 
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. Set environment variables 
+1. Copy the example environment file:
+```bash
+cp .env.example .env
+```
+2. Your .env file should now contain:
+```env
+REACT_APP_BACKEND_URL=https://music-mood-backend.onrender.com
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> ⚠️ Note: Due to Spotify API restrictions, only users added to the Spotify Developer Dashboard can access the live demo.  
+> If you'd like access to test the project, feel free to reach out — or you can clone the repo and use your own Spotify Developer credentials.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## What I Learned
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project gave me hands-on experience building a full-stack AI-integrated web application using real-world APIs. I learned to:
+- Work with third-party services (Spotify, Genius, OpenAI)
+- Handle OAuth 2.0 authentication
+- Extract and preprocess lyrics for sentiment analysis
+- Design clean, responsive UIs with data visualizations
+- Deploy and connect backend/frontend using Render and Vercel
