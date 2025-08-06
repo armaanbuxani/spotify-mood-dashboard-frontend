@@ -33,7 +33,7 @@ This summary is generated using sentiment analysis on lyrics pulled from Genius,
 2. **View your top 20 tracks**  
 3. **Analyze mood and view the summary dashboard**  
 
-Includes interactive charts and sentiment breakdown based on lyrics.
+![DEMO](./assets/demo.gif)
 
 ---
 
