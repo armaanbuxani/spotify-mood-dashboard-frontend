@@ -39,8 +39,9 @@ function App() {
         setTracks(res.data.tracks)
       })
       .catch((err) => {
-        console.error(err);
-        setError('Failed to fetch tracks.')
+        console.error("Invalid or expired token. Redirecting to login.");
+      localStorage.removeItem('spotify_access_token'); 
+      window.location.reload(); 
       });
   }, [accesstoken]);
 
