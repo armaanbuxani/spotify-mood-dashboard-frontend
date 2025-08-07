@@ -2,10 +2,10 @@ import React from 'react'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 const MOOD_COLORS = {
-  happy: '#36A2EB',
-  sad: '#FF6384',
+  happy: '#FFCE56',
+  sad: '#36A2EB',
   angry: '#FF0000',
-  relaxed: '#FFCE56',
+  relaxed: '#72ff56ff',
   energetic: '#845EC2',
   melancholic: '#FF6F91',
   unknown: '#CCCCCC', 
