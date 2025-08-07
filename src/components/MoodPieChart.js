@@ -34,7 +34,7 @@ const MoodPieChart = ({ moodSummaries }) => {
                     label
                     dataKey="value"
                 >
-                    {data.map((_, index) => (
+                    {data.map((entry) => (
                         <Cell key={`cell-${entry.name}`} fill={MOOD_COLORS[entry.name] || '#999999'} />
                     ))}
                 </Pie>
