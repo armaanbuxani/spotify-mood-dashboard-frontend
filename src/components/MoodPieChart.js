@@ -1,7 +1,15 @@
 import React from 'react'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
-const COLORS = ['#1DB954', '#FF6384', '#36A2EB', '#FFCE56', '#845EC2', '#FF6F91'];
+const MOOD_COLORS = {
+  happy: '#36A2EB',
+  sad: '#FF6384',
+  angry: '#FF0000',
+  relaxed: '#FFCE56',
+  energetic: '#845EC2',
+  melancholic: '#FF6F91',
+  unknown: '#CCCCCC', 
+};
 
 const MoodPieChart = ({ moodSummaries }) => {
     const tagCounts = moodSummaries.reduce((acc, item) => {
@@ -27,7 +35,7 @@ const MoodPieChart = ({ moodSummaries }) => {
                     dataKey="value"
                 >
                     {data.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${entry.name}`} fill={MOOD_COLORS[entry.name] || '#999999'} />
                     ))}
                 </Pie>
                 <Tooltip />
