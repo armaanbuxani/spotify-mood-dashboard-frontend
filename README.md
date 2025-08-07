@@ -1,10 +1,18 @@
-# Spotify Mood Dashboard
+# Spotify Mood Dashboard - Frontend
 
 An AI-powered dashboard that analyzes the lyrics of your top 20 Spotify tracks to generate a personalized mood summary with interactive visualizations.
 
 > Built to demonstrate full-stack development, API integration, and applied AI in a production-ready project.
 
 [Live Demo](https://music-mood-frontend.vercel.app) | [Backend Repo](https://github.com/armaanbuxani/music-mood-backend)
+
+---
+
+## About the Project 
+
+The Spotify Mood Dashboard is a full-stack web app that blends music, AI, and design.  
+It lets users connect their Spotify account, pulls lyrics from their top tracks, and analyzes mood using OpenAI — all visualized in a clean, interactive dashboard.  
+Built to showcase applied AI, API integration, and user-focused UI development.
 
 ---
 
@@ -97,11 +105,14 @@ REACT_APP_BACKEND_URL=https://music-mood-backend.onrender.com
 
 ---
 
-## What I Learned
+## What I Gained from This Project
 
-This project gave me hands-on experience building a full-stack AI-integrated web application using real-world APIs. I learned to:
-- Work with third-party services (Spotify, Genius, OpenAI)
-- Handle OAuth 2.0 authentication
-- Extract and preprocess lyrics for sentiment analysis
-- Design clean, responsive UIs with data visualizations
-- Deploy and connect backend/frontend using Render and Vercel
+This project gave me practical experience in building and deploying a real-world AI-integrated web application. I:
+
+- Integrated third-party APIs (Spotify, Genius, OpenAI, ScraperAPI) to build an end-to-end data pipeline
+- Implemented OAuth 2.0 for secure authentication
+- Preprocessed natural language data for sentiment analysis
+- Built a responsive React frontend with Recharts for data visualization
+- Connected and deployed frontend + backend using Vercel and Render
+
+It deepened my understanding of API orchestration, user experience design, and full-stack application architecture.
