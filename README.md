@@ -83,19 +83,20 @@ git clone https://github.com/yourusername/music-mood-frontend
 cd music-mood-frontend
 ```
 
-### 2. Install dependencies 
-```bash
-npm install
-```
-
-### 3. Set environment variables 
+### 2. Set environment variables 
 1. Copy the example environment file:
 ```bash
 cp .env.example .env
 ```
 2. Your .env file should now contain:
 ```env
-REACT_APP_BACKEND_URL=https://music-mood-backend.onrender.com
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
+
+### 3. Start frontend 
+```bash
+npm install
+npm start
 ```
 
 ---

@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     if (!accesstoken) return;
 
-    axios.get(`https://music-mood-dashboard.onrender.com/top-tracks?access_token=${accesstoken}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/top-tracks?access_token=${accesstoken}`)
       .then((res) => {
         setTracks(res.data.tracks)
       })
@@ -70,7 +70,7 @@ function App() {
 
     setLoadingLyrics(true);
     try {
-      const res = await axios.get(`https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track)}&artist=${encodeURIComponent(artist)}`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/lyrics?track=${encodeURIComponent(track)}&artist=${encodeURIComponent(artist)}`);
       setActiveLyrics({
         track,
         artist,
@@ -96,7 +96,7 @@ function App() {
         await delay(index * delayMs); // stagger start
         try {
           const res = await axios.get(
-            `https://music-mood-dashboard.onrender.com/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
+            `${process.env.REACT_APP_BACKEND_URL}/lyrics?track=${encodeURIComponent(track.name)}&artist=${encodeURIComponent(track.artist)}`
           );
           resolve({ track, lyrics: res.data.lyrics });
         } catch (err) {
@@ -128,7 +128,7 @@ function App() {
           }
 
           try {
-            const moodRes = await axios.post("https://music-mood-dashboard.onrender.com/analyze-mood", {
+            const moodRes = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/analyze-mood`, {
               lyrics,
             });
 
@@ -153,7 +153,7 @@ function App() {
       setMoodSummaries(moodResults);
 
       const allSummaries = moodResults.map((m) => m.summary);
-      const res = await axios.post("https://music-mood-dashboard.onrender.com/overall-mood", {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/overall-mood`, {
         summaries: allSummaries,
       });
       setOverallMood(res.data.overall_mood);
