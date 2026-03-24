@@ -114,7 +114,8 @@ function App() {
     setShowMoodModal(true);
 
     try {
-      const lyricsResults = await staggeredLyricsRequests(tracks, 4000);
+      const tracksToAnalyze = tracks.slice(0, 10);
+      const lyricsResults = await staggeredLyricsRequests(tracksToAnalyze, 4000);
 
       const moodResults = await Promise.all(
         lyricsResults.map(async ({ track, lyrics, error }) => {
