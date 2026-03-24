@@ -6,7 +6,7 @@ import MoodPieChart from './components/MoodPieChart'
 function App() {
   const [accesstoken, setAccessToken] = useState('');
   const [tracks, setTracks] = useState([]);
-  const [error, setError] = useState('');
+  const [error] = useState('');
   const [activeLyrics, setActiveLyrics] = useState(null);
   const [loadingLyrics, setLoadingLyrics] = useState(false);
   const [moodSummaries, setMoodSummaries] = useState([]);
@@ -29,7 +29,7 @@ function App() {
         setAccessToken(storedToken);
       }
     }
-  }, []);
+  }, [accesstoken]);
 
   useEffect(() => {
     if (!accesstoken) return;
